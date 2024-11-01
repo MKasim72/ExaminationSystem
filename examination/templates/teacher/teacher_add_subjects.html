@@ -1,0 +1,35 @@
+{% extends "teacher/teacher_layout.html" %}
+{% block content %}
+{% comment %} action="{% url 'teacher_add_subjects' %}" {% endcomment %}
+{% comment %} <h1>Add Subjects h1</h1> {% endcomment %}
+<form method="POST">
+    {% csrf_token %}
+    <h3 class="text-center">Add Subject Form</h3>
+    <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Subject Name : </label>
+        {% comment %} <input type="text" class="form-control border-dark" placeholder="Python"> {% endcomment %}
+        {{subject_form.subject}}
+      </div>
+      <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Total Questions : </label>
+        {{subject_form.total_questions}}
+      </div>
+      <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Total Marks : </label>
+        {{subject_form.total_marks}}
+      </div>
+    {% comment %} {{ subject_form }} {% endcomment %}
+    {% comment %} Subject : <input type="text" name="subject" id="subject"><br>
+    Total Questions : <input type="numbers" name="total_questions" id="total_questions"><br>
+    Total Marks : <input type="numbers" name="total_marks" id="total_marks"><br> {% endcomment %}
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+            <button class="btn btn-success">Add Subject</button>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    
+</form>
+{% endblock  %}
+   

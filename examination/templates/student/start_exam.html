@@ -1,0 +1,64 @@
+{% extends "student/student_layout.html" %}
+{% block content %}
+
+    <form method="post" action="{% url 'calculate_marks' %}" onsubmit="save_res()">
+        {% csrf_token %}
+        
+        <table class="table table-hover table-bordered">
+            <tr class="table-dark text-center">
+                <th>Sr.no.</th>
+                <th>Questions</th>
+                <th>Option 1</th>
+                <th>Option 2</th>
+                <th>Option 3</th>
+                <th>Option 4</th>
+            </tr>
+            {% for question in questions %}
+            <tr class="text-center">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ question.question }}</td>
+                <td>
+                    <input type="radio" id="option1_{{ forloop.counter }}" name="{{ forloop.counter }}" value="option1">
+                    <label for="option1_{{ forloop.counter }}">{{ question.option1 }}</label>
+                </td>
+                <td>
+                    <input type="radio" id="option2_{{ forloop.counter }}" name="{{ forloop.counter }}" value="option2">
+                    <label for="option2_{{ forloop.counter }}">{{ question.option2 }}</label>
+                </td>
+                <td>
+                    <input type="radio" id="option3_{{ forloop.counter }}" name="{{ forloop.counter }}" value="option3">
+                    <label for="option3_{{ forloop.counter }}">{{ question.option3 }}</label>
+                </td>
+                <td>
+                    <input type="radio" id="option4_{{ forloop.counter }}" name="{{ forloop.counter }}" value="option4">
+                    <label for="option4_{{ forloop.counter }}">{{ question.option4 }}</label>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4 text-center">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+            <div class="col-4"></div>
+        </div>
+        
+    </form>
+    
+    <script>
+        function save_res() {  
+            document.querySelectorAll('input[type="radio"]:checked').forEach(inp => 
+                setCookie(inp.name, inp.value, 3));
+        }
+        
+        function setCookie(cname, cvalue, exdays) {
+            let d = new Date();
+            d.setTime(d.getTime() + (exdays * 86400000));
+            document.cookie = `${cname}=${cvalue};expires=${d.toUTCString()};path=/`;
+        }
+    </script>
+{% endblock %}
+
+

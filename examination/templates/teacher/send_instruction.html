@@ -1,0 +1,10 @@
+{% extends "teacher/teacher_layout.html" %}
+{% block content %}
+<h2 class="text-center bg-success">Send Instruction</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-outline-success">Send</button>
+</form>
+{% endblock %}
+

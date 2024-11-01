@@ -1,0 +1,134 @@
+{% extends "student_page.html" %}
+{% load static %}
+{% block body %}
+<style>
+    
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+#welcome_container {
+    position: relative;
+    background-image: url("{% static 'student_page/1st.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:1px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#welcome_container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity (0.5) to make it darker or lighter */
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 2; /* Ensure content is above the overlay */
+}
+
+#welcome {
+    font-size: 4rem;
+    text-align: center;
+}
+
+#welcome_container h3 {
+    font-size: 1.5rem;
+}
+
+#welcome_container button {
+    margin-top: 20px;
+}
+</style>
+
+<div class="container-fluid" id="welcome_container">
+<div class="container text-center">
+    <div class="card text-center bg-dark">
+        <div class="card-header">
+            <h2>Register as a {{ user_type }}</h2>
+        </div>
+        <hr>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {% comment %} {{form.as_p}} {% endcomment %}
+                <div class="container">
+                    <div class="row mb-4">
+                       <div class="col-2">
+                        <label for="" class="fs-4 fw-bold form-label">First Name :</label>
+                       </div>
+                       <div class="col-10">
+                        {{form.first_name}}
+                       </div> 
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-2">
+                         <label for="" class="fs-4 fw-bold form-label">Last Name :</label>
+                        </div>
+                        <div class="col-10">
+                         {{form.last_name}}
+                        </div> 
+                     </div>
+
+                     <div class="row mb-4">
+                        <div class="col-2">
+                         <label for="" class="fs-4 fw-bold form-label">Username :</label>
+                        </div>
+                        <div class="col-10">
+                         {{form.username}}
+                        </div> 
+                     </div>
+
+                     <div class="row mb-4">
+                        <div class="col-2">
+                         <label for="" class="fs-4 fw-bold form-label">Email :</label>
+                        </div>
+                        <div class="col-10">
+                         {{form.email}}
+                        </div> 
+                     </div>
+
+                     <div class="row mb-4">
+                        <div class="col-2">
+                         <label for="" class="fs-4 fw-bold form-label">Password :</label>
+                        </div>
+                        <div class="col-10">
+                         {{form.password}}
+                        </div> 
+                     </div>
+
+                     <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button class="btn btn-outline-success">Register</button>
+                            <p class="mt-3">Already have an account ? <a href="{% url 'login' %}" class="fw-bold text-success">Log In</a> </p>
+                        </div>
+                        <div class="col-4"></div>
+                     </div>
+                    
+                </div>
+      </div>
+    
+    
+    
+</div>
+</div>
+
+{% endblock %}
+   
+

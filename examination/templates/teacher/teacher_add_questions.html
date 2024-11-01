@@ -1,0 +1,142 @@
+{% extends "teacher/teacher_layout.html" %}
+
+{% comment %} action="{% url 'teacher_add_questions' %} {% endcomment %}
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add Question</h1> {% endcomment %}
+    {% comment %} <form action="{% url 'questions_submit' %}" method="post">
+        {% csrf_token %}
+        Subject : <input type="text" name="subject" id="subject"><br>
+        Questions : <input type="numbers" name="question" id="question"><br>
+        Total Marks : <input type="numbers" name="total_marks" id="total_marks"><br>
+        Options : 
+        Option 1  <input type="text" name="option1" id="">
+        Option 2  <input type="text" name="option2" id="">
+        Option 3  <input type="text" name="option3" id="">
+        Option 4  <input type="text" name="option4" id=""><br>
+        Answer <input type="text" name="answer" id=""><br>
+        <button>Add Subject</button>
+    </form> {% endcomment %}
+    {% comment %} <form action="{% url 'questions_submit' %}" method="post">
+        {% csrf_token %}
+        Subject: 
+        <select name="subject" id="subject">
+            {% for subject in subjects %}
+                <option value="{{ subject.id }}">{{ subject.subject }}</option>
+            {% endfor %}
+        </select><br>
+        
+        Question: <input type="text" name="question" id="question"><br>
+        
+        Options: <br>
+        Option 1: <input type="text" name="option1"><br>
+        Option 2: <input type="text" name="option2"><br>
+        Option 3: <input type="text" name="option3"><br>
+        Option 4: <input type="text" name="option4"><br>
+        Answer: 
+        {% for i in answer %}
+        <select name="answer" id="answer">
+            <option value="">{{i.answer}} answer</option>
+        </select><br>
+        {% endfor %} {% endcomment %}
+        
+        {% comment %} <form method="POST" action="{% url 'teacher_add_questions' %}">
+            {% csrf_token %}
+            
+        
+            <label for="question">Question:</label>
+            {{ form.question }}<br>
+        
+            <label for="option1">Option 1:</label>
+            {{ form.option1 }}<br>
+        
+            <label for="option2">Option 2:</label>
+            {{ form.option2 }}<br>
+        
+            <label for="option3">Option 3:</label>
+            {{ form.option3 }}<br>
+        
+            <label for="option4">Option 4:</label>
+            {{ form.option4 }}<br>
+        
+            <label for="answer">Answer:</label>
+            {{ form.answer }}<br>
+        
+            <label for="marks">Marks:</label>
+            {{ form.marks }}<br>
+        
+            <button type="submit">Add Question</button>
+        </form>
+</body>
+</html> {% endcomment %}
+
+{% block content %}
+{% comment %} action="{% url 'teacher_add_subjects' %}" {% endcomment %}
+{% comment %} <h1>Add Subjects h1</h1> {% endcomment %}
+<form method="POST">
+    {% csrf_token %}
+    <h3 class="text-center">Add Question Form</h3>
+    <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Subject </label>
+        {{ form.subject }}
+      </div>
+    <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Question : </label>
+        {{ form.question }}
+      </div>
+
+      
+    <div class="mb-3">
+      <label for="subject_name" class="form-label fw-bold">Marks </label>
+      {{ form.marks }}
+    </div>
+
+      <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Option 1 : </label>
+        {{ form.option1 }}
+      </div>
+
+      <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Option 2 : </label>
+        {{ form.option2 }}
+      </div>
+
+      <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Option 3 : </label>
+        {{ form.option3 }}
+      </div>
+
+      <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Option 4 : </label>
+        {{ form.option4 }}
+      </div>
+
+      <div class="mb-3">
+        <label for="subject_name" class="form-label fw-bold">Answer </label>
+        {{ form.answer }}
+      </div>
+
+
+
+
+    {% comment %} {{ subject_form }} {% endcomment %}
+    {% comment %} Subject : <input type="text" name="subject" id="subject"><br>
+    Total Questions : <input type="numbers" name="total_questions" id="total_questions"><br>
+    Total Marks : <input type="numbers" name="total_marks" id="total_marks"><br> {% endcomment %}
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+            <button class="btn btn-success">Add Question</button>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    
+</form>
+{% endblock  %}

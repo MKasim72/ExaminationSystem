@@ -1,0 +1,154 @@
+{% extends "student_page.html" %}
+{% load static %}
+{% block body %}
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    /* Center the card on the page */
+    .card-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Custom input styling */
+    .form-control {
+        border: 1px solid #ced4da;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    }
+
+    /* Custom button styling */
+    .btn-custom {
+        background-color: #007bff;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 20px;
+        transition: background-color 0.3s, transform 0.3s;
+        width: 100%;
+    }
+
+    .btn-custom:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 86, 179, 0.3);
+    }
+
+    .btn-link-custom {
+        color: #007bff;
+        transition: color 0.3s;
+    }
+
+    .btn-link-custom:hover {
+        color: #0056b3;
+        text-decoration: none;
+    }
+
+    #lock{
+        font-size:1.2rem
+    }
+
+    #welcome_container {
+        position: relative;
+        background-image: url("{% static 'login/login_2.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top:1px;
+
+    }
+    #login_i{
+        font-size:5rem
+    }
+
+
+    #alert_error {
+        position: absolute;
+        top: 5rem;  /* Position the alert 2rem from the top of the container */
+        width: 85%;
+        text-align: center;
+        z-index: 10;
+    }
+
+</style>
+{% if error %}
+<div class="container">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert_error">
+        <strong>Try Again!</strong> {{ error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+{% endif %}
+
+<div class="container-fluid" id="welcome_container">
+    <div class="container">
+        <div class="card-center">
+            <div class="card shadow-lg p-3 mb-5 bg-dark border-4 rounded animate__animated animate__fadeIn" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-center text-white"><i class="bi bi-people-fill" id="login_i"></i></h5>
+                    <p class="card-text text-center ">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="mb-2">
+                                <div class="input-group">
+                                    <div class="input-group-text" id="lock">@</div>
+                                    {{ form.username }}
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <div class="input-group">
+                                    <div class="input-group-text"><i class="bi bi-file-lock" id=lock></i></div>
+                                    {{ form.password }}
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-4"></div>
+                                <div class="col-4">
+                                    <button type="submit" class="btn btn-outline-success">Login</button>
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+                        </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the alert element
+        const alert = document.getElementById('alert_error');
+
+        // Check if the alert exists
+        if (alert) {
+            // Set a timeout to dismiss the alert after 20 seconds (20000 milliseconds)
+            setTimeout(function() {
+                // Remove the alert element from the DOM
+                alert.classList.remove('show');
+                alert.classList.add('fade'); // Optional: Add fade effect
+            }, 10000); // 20 seconds
+        }
+    });
+</script>
+
+{% endblock %}
+
+
+
+

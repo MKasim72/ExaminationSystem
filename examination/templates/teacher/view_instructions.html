@@ -1,0 +1,19 @@
+{% extends "teacher/teacher_layout.html" %}
+
+{% block content %}
+<h2>All Instructions</h2>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Message</th>
+        <th>Date Sent</th>
+    </tr>
+    {% for instruction in instructions %}
+    <tr>
+        <td>{{ instruction.title }}</td>
+        <td>{{ instruction.message }}</td>
+        <td>{{ instruction.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

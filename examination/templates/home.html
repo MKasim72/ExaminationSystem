@@ -1,0 +1,208 @@
+{% extends "student_page.html" %}
+
+{% comment %} {% extends "student_page.html" %} {% endcomment %}
+{% load static %}
+{% block body %}
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        {% comment %} overflow: hidden; {% endcomment %}
+    }
+
+    /* Typewriter effect */
+    .typewriter h1 {
+        color: navy;
+        font-size: 4.3rem;
+        overflow: hidden; 
+        border-right: 2px solid #fff;
+        white-space: nowrap; 
+        margin: 0 auto; 
+        letter-spacing: .10em; 
+        animation: typing 3.5s steps(18, end) infinite, blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: white; }
+    }
+
+    /* Hero Section */
+    .hero-section {
+        background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.8)), url('/path/to/your/image.jpg') no-repeat center center;
+        background-size: cover;
+        text-align: center;
+        padding: 100px 20px;
+    }
+
+    /* Other styles for the layout */
+    .btn-custom {
+        background-color: #007bff;
+        color: white;
+        border-radius: 20px;
+        padding: 10px 20px;
+        transition: background-color 0.3s, transform 0.3s;
+        width: 100%;
+    }
+
+    .btn-custom:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 86, 179, 0.3);
+    }
+</style>
+<!-- Hero Section -->
+<div class="hero-section text-center text-white py-5">
+     <div class="container">
+         <div class="typewriter">
+
+            <span class="fs-3 fw-bold">Welcome to <h1>Examination System</h1></span>
+         </div>
+         <p class="lead">Empowering Students and Teachers with Seamless Examination Management</p>
+         <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg mx-2">Login</a>
+         {% comment %} <a href="#features" class="btn btn-outline-light btn-lg mx-2">Learn More</a> {% endcomment %}
+     </div>
+ </div>
+
+<!-- Features Section -->
+<div id="features" class="features-section py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Features</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Easy Test Creation</h5>
+                        <p class="card-text">Teachers can create and manage tests with just a few clicks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Real-Time Results</h5>
+                        <p class="card-text">Students can register and start thier exam and can get their results instantly.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Security</h5>
+                        <p class="card-text">It is fully secured as only register student or teacher can get access t the system</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="how-it-works-section py-5" style="background:linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.8));" >
+    <div class="container">
+        <h2 class="text-center mb-4">How It Works</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">For Students</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">For Teachers</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="card-title"><i class="bi bi-arrow-return-right"></i> Register themselves from student page and login</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="card-title"><i class="bi bi-arrow-return-right"></i> Register themselves from teacher page and login</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="card-title"><i class="bi bi-arrow-return-right"></i> After Teacher add exam Student can start exam can view their marks after exam with no. of attempts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <p class="card-title"><i class="bi bi-arrow-return-right"></i> Teacher can add subject and then from add question can add question for that subject </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="testimonials-section py-5" >
+    <div class="container">
+        <h2 class="text-center mb-4">Testimonials</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <blockquote class="blockquote text-center">
+                    <p class="mb-0">"This system has transformed the way I prepare for exams!"</p>
+                    <footer class="blockquote-footer mt-5">A Satisfied Student</footer>
+                </blockquote>
+            </div>
+    
+            <div class="col-md-6">
+                <blockquote class="blockquote text-center">
+                    <p class="mb-0">"Managing exams has never been easier."</p>
+                    <footer class="blockquote-footer mt-5">A Happy Teacher</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Us Section -->
+<div class="about-section py-5" style="background:linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.8));">
+    <div class="container">
+        <h2 class="text-center mb-4">About Us</h2>
+        <p class="text-center">Our platform is designed with both educators and learners in mind, offering tools that make test creation, administration, and evaluation easier than ever. With features like real-time results, comprehensive reporting, and user-friendly interfaces, we are committed to enhancing the examination experience for all.</p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-3">
+    <div class="container text-center">
+        <div class="social-media mt-3">
+            <!-- Social media icons -->
+        </div>
+        <div class="copyright" style="color:#BDBDBD">
+            @MohammedKasim
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- Rest of your page content (Features, How It Works, Testimonials, etc.) -->
+
+{% endblock %}
+

@@ -1,0 +1,49 @@
+{% extends "student/student_layout.html" %}
+{% block user %}
+{{ user.username }}
+{% endblock  %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+
+    {% comment %} <p>Welcome, {{ user.username }}!</p> {% endcomment %}
+    {% comment %} <a href="{% url 'custom_logout' %}">Logout</a> {% endcomment %}
+    {% comment %} {% if subjects %}
+        {% for i in subjects %}
+             {{i.subject}} 
+            <a href="{% url 'start_exam' i.id %}">Start Exam</a> <br>
+        {% endfor %}
+    {% else %}
+    <p>No subjects assigned to you.</p>
+    {% endif %}
+    {% else %}
+    <p>Please <a href="{% url 'login' %}">log in</a></p> {% endcomment %}    
+
+    {% comment %} {% if subjects %} {% endcomment %}
+    
+    <table class="table table-hover table-bordered"  border=2>
+        <tr class="table-dark text-center">
+            <th>Subject</th>
+            <th>Total Marks</th>
+            <th>Obtained Marks</th>
+            <th>Attempts</th>
+            <th>Exam Date</th>
+        </tr>
+        {%for j in total_marks%}
+        {% for i in results %}
+        
+        <tr class="text-center">
+            <td>{{i.subject}}</td>
+            <td>{{j.total_marks}}</td>
+            <td class="">{{i.marks}}</td>
+            <td class="">Attempt {{ forloop.counter }}</td>
+            <td class="text-center"> {{i.date}}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </table>
+    
+    {% else %}
+    {% comment %} {% endif %} {% endcomment %}
+    {% endif %}
+{% endblock %}

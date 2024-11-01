@@ -1,0 +1,28 @@
+{% extends "student/student_layout.html" %}
+
+{% block user %}
+{{ user.username }}
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h2>Instructions</h2>
+        {% if instructions %}
+        {% for i in instructions %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{i.teacher}}</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">{{i.title}}</h6>
+              <p class="card-text">{{i.message}}</p>
+              <p>{{i.created_at}}</p>
+            </div>
+          </div>
+        {% endfor %}
+       
+        {% else %}
+            <p>No instructions available.</p>  <!-- Message when no instructions are found -->
+        {% endif %}
+    {% else %}
+        <p>Please log in to view instructions.</p>
+    {% endif %}
+{% endblock %}

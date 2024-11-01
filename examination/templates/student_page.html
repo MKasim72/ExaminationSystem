@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title%}
+<title>Student</title>
+{%endblock%}
+{% block register %}
+<a href="{% url 'register_student' %}" class="btn btn-success">Register</a>
+{% endblock  %}
+{% block body %}
+<style>
+    
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+    #welcome_container {
+        position: relative;
+        background-image: url("{% static 'student_page/1st.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top:1px;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    #welcome_container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity (0.5) to make it darker or lighter */
+        z-index: 1;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2; /* Ensure content is above the overlay */
+    }
+
+    #welcome {
+        font-size: 4rem;
+        text-align: center;
+    }
+
+    #welcome_container h3 {
+        font-size: 1.5rem;
+    }
+
+    #welcome_container button {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container-fluid" id="welcome_container">
+    <div class="container text-center">
+        <h1 id="welcome"><i class="bi bi-mortarboard-fill"></i> Welcome Student</h1>
+        <h3>Welcome To Our System, To take advantage of our system register yourself...</h3>
+        <a class="btn btn-info btn-lg mt-3 text-white text-decoration-none" href="{% url 'register_student' %}"><i class="bi bi-mortarboard-fill"></i> Create Your Account</a> 
+        <a class="btn btn-lg btn-success mt-3 text-decoration-none" href="{% url 'login' %}"><i class="bi bi-mortarboard-fill"></i>  Log In</a>
+    </div>
+</div>
+
+{% endblock %}
